@@ -12,36 +12,27 @@ class BinarySearchTree {
   }
   insert(value){
     const newNode = new Node(value);
-    console.log('newNode : '+newNode.value);
     if(this.root == null){
-      console.log('found null root');
       this.root = newNode;
       return newNode;
     }
     let currentNode = this.root;
     while(currentNode){
-      console.log('comparing '+value +' '+currentNode.value );
       if(value > currentNode.value){
         if(currentNode.right == null){
             currentNode.right = newNode;
-            console.log('inserting right'+value);
+            console.log('inserting right '+value);
             break;
         }
-        else{
-          currentNode = currentNode.right;
-        }
-        continue;
+        currentNode = currentNode.right;
       }
       else if(value < currentNode.value){
         if(currentNode.left == null){
           currentNode.left = newNode;
-          console.log('inserting left'+value);
+          console.log('inserting left '+value);
           break;
         }
-        else{
-          currentNode = currentNode.left;
-        }
-        continue;
+        currentNode = currentNode.left;
       }
       else{
         console.log('Duplicate vertex not allowed');
@@ -57,7 +48,7 @@ class BinarySearchTree {
     while(currentNode){
       console.log('comparing '+value +' '+currentNode.value );
       if(value == currentNode.value){
-        console.log('Value found!'+currentNode);
+        console.log('Value found! '+currentNode.value);
         return currentNode;
       }
       else if(value > currentNode.value){
@@ -65,23 +56,17 @@ class BinarySearchTree {
             console.log('Value not found!');
             break;
         }
-        else{
-          currentNode = currentNode.right;
-        }
-        continue;
+        currentNode = currentNode.right;
       }
-      else if(value < currentNode.value){
+      else{
         if(currentNode.left == null){
           console.log('Value not found');
           break;
         }
-        else{
-          currentNode = currentNode.left;
-        }
-        continue;
+        currentNode = currentNode.left;
       }
-      
     }
+    
   }
   // remove
 }
@@ -94,7 +79,6 @@ tree.insert(20)
 tree.insert(170)
 tree.insert(15)
 tree.insert(1)
-console.log(tree);
 JSON.stringify(traverse(tree.root))
 tree.lookup(170);
 //     9
@@ -107,8 +91,3 @@ function traverse(node) {
   tree.right = node.right === null ? null : traverse(node.right);
   return tree;
 }
-
-
-
-
-
